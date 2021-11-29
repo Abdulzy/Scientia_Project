@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905620922469",
+    "project_id": "scientia-33814",
+    "storage_bucket": "scientia-33814.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905620922469:android:046b14a0bc00ff3954268c",
+        "android_client_info": {
+          "package_name": "edu.neu.course.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905620922469-s5l735ri5uhc96v8tv45u44951l52us2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtBBECFErSrmJr5AhKHOD7AjwUcyoxX4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905620922469-s5l735ri5uhc96v8tv45u44951l52us2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
