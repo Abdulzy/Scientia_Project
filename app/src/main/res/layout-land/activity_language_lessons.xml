@@ -48,12 +48,13 @@
 
   <TextView
       android:id="@+id/text_lang_id"
-      android:layout_width="91dp"
+      android:layout_width="183dp"
       android:layout_height="wrap_content"
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
+      android:layout_marginStart="17dp"
       android:layout_marginTop="11dp"
-      android:layout_marginEnd="229dp"
+      android:layout_marginEnd="336dp"
       android:layout_toStartOf="@+id/text_course_id"
       android:fontFamily="sans-serif-black"
       android:text="TextView"
@@ -62,20 +63,20 @@
 
   <TextView
       android:id="@+id/text_course_id"
-      android:layout_width="wrap_content"
+      android:layout_width="166dp"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
       android:layout_alignParentEnd="true"
-      android:layout_marginTop="10dp"
+      android:layout_marginTop="12dp"
       android:layout_marginEnd="29dp"
       android:fontFamily="sans-serif-black"
-      android:text="TextView"
+      android:text="Courses"
       android:textAlignment="center"
       android:textSize="15dp" />
 
   <TextView
       android:id="@+id/text_progress_id"
-      android:layout_width="wrap_content"
+      android:layout_width="183dp"
       android:layout_height="wrap_content"
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
@@ -88,18 +89,16 @@
 
   <ImageButton
       android:id="@+id/lessonCompletion_id"
-      android:layout_width="48dp"
-      android:layout_height="54dp"
+      android:layout_width="115dp"
+      android:layout_height="49dp"
+      android:layout_above="@+id/profileButton_id"
       android:layout_alignParentTop="true"
       android:layout_alignParentEnd="true"
-      android:layout_marginStart="276dp"
-      android:layout_marginTop="42dp"
-      android:layout_marginEnd="11dp"
+      android:layout_marginStart="378dp"
+      android:layout_marginTop="41dp"
+      android:layout_marginEnd="36dp"
+      android:layout_marginBottom="254dp"
       android:layout_toEndOf="@+id/text_progress_id"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/ic_lessonscompleted"
       tools:ignore="SpeakableTextPresentCheck" />
 

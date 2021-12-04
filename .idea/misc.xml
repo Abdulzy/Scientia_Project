@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_language_lessons.xml" value="0.23505434782608695" />
+        <entry key="../../../../../../../layout/custom_preview.xml" value="0.1828125" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_home.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout-land/activity_language_lessons.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_lesson_card.xml" value="0.6023688663282571" />
+        <entry key="app/src/main/res/layout/activity_language_lessons.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_lesson.xml" value="0.1203125" />
-        <entry key="app/src/main/res/layout/activity_lesson_card.xml" value="0.1203125" />
+        <entry key="app/src/main/res/layout/activity_lesson_card.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_lesson_recycler_view.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23958333333333334" />
       </map>

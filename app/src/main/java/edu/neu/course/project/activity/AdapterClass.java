@@ -2,14 +2,17 @@ package edu.neu.course.project.activity;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -38,6 +41,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
     public void onBindViewHolder(@NonNull AdapterClass.ViewHolder holder, int position) {
 
         Lesson lesson = lessons.get(position);
+//        Picasso.with(context).load(lesson.getImageLink()).into(holder.image);
+        Log.d("TAG", "image link is " + lesson.getImageLink());
         holder.text.setText(lesson.getLessonName());
 
     }
@@ -53,7 +58,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image;
-        EditText text;
+        TextView text;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

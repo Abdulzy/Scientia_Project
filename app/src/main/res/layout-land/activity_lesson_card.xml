@@ -4,11 +4,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="190dp"
-    android:layout_height="190dp"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
     android:layout_gravity="center"
-    android:layout_marginRight="100dp"
-    android:layout_marginLeft="100dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="300dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
     android:scrollbars="vertical"
@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/imageView_id"
-            android:layout_width="190dp"
-            android:layout_height="130dp"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:scaleType="fitCenter"
@@ -33,21 +33,20 @@
 
         <TextView
             android:id="@+id/lessonName_id"
-            android:layout_width="186dp"
-            android:layout_height="43dp"
-            android:textAlignment="center"
-            android:fontFamily="sans-serif-black"
-            android:textSize="25dp"
-            android:background="@color/card_backgroundcolor"
+            android:layout_width="110dp"
+            android:layout_height="24dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="141dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="6dp"
-            android:text="text" />
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="99dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="27dp"
+            android:fontFamily="sans-serif-black"
+            android:text="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
