@@ -6,13 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".DashBoard">
 
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/drawer_layout">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <include-->
+<!--                layout="@layout/main_toolbar"/>-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:text="Progress"-->
+    <!--            android:textSize="50sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            android:layout_gravity="center"/>-->
+
+<!--            <include layout="@layout/main_nav_drawer" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:background="@android:color/white">-->
+
+
+<!--            </RelativeLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_layout"
-        android:layout_width="411dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -21,10 +56,9 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="114dp"
-            android:layout_height="39dp"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/progress_id"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
             android:layout_marginStart="4dp"
             android:onClick="clickProgress"
             android:text="Progress"
@@ -32,10 +66,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/const_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.019"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/const_layout"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.333" />
 
         <TextView
             android:id="@+id/language_id"
@@ -52,14 +86,15 @@
 
         <ImageButton
             android:layout_width="73dp"
-            android:layout_height="48dp"
+            android:layout_height="32dp"
             android:onClick="clickLogout"
             android:src="@drawable/ic_logout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.884"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintStart_toEndOf="@+id/progress_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,8 +112,8 @@
     <fragment
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="414dp"
-        android:layout_height="550dp"
+        android:layout_width="734dp"
+        android:layout_height="221dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,4 +122,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/my_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

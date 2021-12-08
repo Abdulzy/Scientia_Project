@@ -61,8 +61,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
     }
 
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image;

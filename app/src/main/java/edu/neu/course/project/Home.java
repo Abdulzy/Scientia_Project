@@ -47,7 +47,6 @@ public class Home extends Fragment {
     private RecyclerView.LayoutManager rLayoutManger;
     private ImageView image;
     private TextView lesson_txtview;
-    private TextView course_progress;
     private TextView course_list;
     private TextView current_course;
     private ImageButton home;
