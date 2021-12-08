@@ -1,6 +1,7 @@
 package edu.neu.course.project.activity;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import edu.neu.course.project.Home;
 import edu.neu.course.project.R;
 import edu.neu.course.project.data.Lesson;
 
@@ -25,7 +27,12 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
     Context context;
 //    private ItemClickListener listener;
 
-    public AdapterClass(ArrayList<Lesson> lessonList, LanguageLessons activity) {
+//    public AdapterClass(ArrayList<Lesson> lessonList, LanguageLessons activity) {
+//        this.lessons = lessonList;
+//        this.context = activity;
+//    }
+
+    public AdapterClass(ArrayList<Lesson> lessonList, Context activity) {
         this.lessons = lessonList;
         this.context = activity;
     }
@@ -49,6 +56,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
 
     @Override
     public int getItemCount() {
+
         return lessons.size();
     }
 

@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
-            android:name=".activity.LessonRecyclerView"
+            android:name=".DashBoard"
             android:exported="true" />
         <activity
-            android:name=".activity.LanguageLessons"
+            android:name=".LanguageActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

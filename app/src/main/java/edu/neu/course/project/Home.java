@@ -1,38 +1,42 @@
-package edu.neu.course.project.activity;
+package edu.neu.course.project;
 
 import static android.content.ContentValues.TAG;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.media.Image;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.neu.course.project.R;
+import edu.neu.course.project.activity.AdapterClass;
+//import edu.neu.course.project.activity.LanguageLessons;
 import edu.neu.course.project.data.Lesson;
 
-public class LanguageLessons extends AppCompatActivity {
+public class Home extends Fragment {
 
+
+    View v;
+    RecyclerView rview;
     private DatabaseReference reference_users, reference_lessons;
     private Map<String, List<Lesson>> lessonsMap = new HashMap<>();
     private String user = "Meera";
@@ -48,31 +52,44 @@ public class LanguageLessons extends AppCompatActivity {
     private TextView current_course;
     private ImageButton home;
     private ImageButton account;
+    private Map<Lesson, String> progress;
+
+
+    public Home() {
+        // Required empty public constructor
+    }
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_home, container, false);
+        rLayoutManger = new LinearLayoutManager(this.getContext());
+        rview = v.findViewById(R.id.rcv_user);
+        rview.setHasFixedSize(true);
+        rview.setLayoutManager(rLayoutManger);
+        rviewAdapter = new AdapterClass(lessonsArray_user, getContext());
+        rview.setAdapter(rviewAdapter);
+        rview.setLayoutManager(rLayoutManger);
+        return v;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_language_lessons);
-        image = findViewById(R.id.imageView_id);
-        lesson_txtview = findViewById(R.id.lessonName_id);
-        home = findViewById(R.id.homeButton_id);
-        account = findViewById(R.id.profileButton_id);
-        current_course = findViewById(R.id.text_course_id);
-        course_progress = findViewById(R.id.text_progress_id);
-        course_list = findViewById(R.id.text_course_id);
         reference_users = FirebaseDatabase.getInstance().getReference("Users");
-        createRecyclerView();
+        progress = new HashMap<>();
         getData();
-        current_course.setText(language);
     }
 
     private void getData() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         Thread userThread = new Thread(() -> getUsers(databaseReference));
-        Thread stickerThread = new Thread(() -> getUserLessonData(databaseReference));
+        Thread lessonDataThread = new Thread(() -> getUserLessonData(databaseReference));
         userThread.start();
-//        stickerThread.start();
+        lessonDataThread.start();
     }
 
     private void getUserLessonData(DatabaseReference databaseReference) {
@@ -131,34 +148,12 @@ public class LanguageLessons extends AppCompatActivity {
             lessonsArray_user.add(lesson);
         }
     }
-    
+
     private void fetchDataLesson(DataSnapshot userSnapshot) {
 
         Long number_totalLessons = userSnapshot.child("TotalLessons").getValue(Long.class);
         Long completed = userSnapshot.child("completed").getValue(Long.class);
         Long progress = userSnapshot.child("progress").getValue(Long.class);
-        if (progress == 100) {
 
-        }
-        else {
-
-        }
-    }
-
-    private void createRecyclerView() {
-
-        rLayoutManger = new LinearLayoutManager(this);
-        recyclerView = findViewById(R.id.rcv_user);
-        recyclerView.setHasFixedSize(true);
-        rviewAdapter = new AdapterClass(lessonsArray_user, LanguageLessons.this);
-        //attributions bond to the item has been changed
-//        ItemClickListener itemClickListener = position -> {
-//            //attributions bond to the item has been changed
-//            itemList.get(position).onItemClick(position);
-//            rviewAdapter.notifyItemChanged(position);
-//        };
-//        rviewAdapter.setOnItemClickListener(itemClickListener);
-        recyclerView.setAdapter(rviewAdapter);
-        recyclerView.setLayoutManager(rLayoutManger);
     }
 }
