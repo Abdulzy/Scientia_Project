@@ -1,5 +1,8 @@
 package edu.neu.course.project;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.view.GravityCompat;
@@ -15,14 +18,27 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DashBoard extends AppCompatActivity {
 
     private TextView language;
+    private Map<String, String> languageProgress_map;
+    private String user = "Meera";
+    private String lang = "Korean";
 
 
     @Override
@@ -30,6 +46,7 @@ public class DashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash);
         language = findViewById(R.id.language_id);
+        languageProgress_map = new HashMap<>();
         language.setText("Korean");
         //NavHostFragment navHostFragment = (NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
         //NavController navController = navHostFragment.getNavController();
@@ -41,52 +58,58 @@ public class DashBoard extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
-//
-//    public void ClickMenu(View view) {
-//
-//        drawerOpen(dlayout);
-//    }
-//
-//    private void drawerOpen(DrawerLayout dlayout) {
-//
-//        dlayout.openDrawer(GravityCompat.START);
-//    }
-//
-//    public void clickLogo(View v) {
-//        drawerClose(dlayout);
-//    }
-////
-////    private void drawerClose(DrawerLayout dlayout) {
-////
-////        if (dlayout.isDrawerOpen(GravityCompat.START)) {
-////            dlayout.closeDrawer(GravityCompat.START);
-////        }
-////    }
 
-//    public void clickHome(View v) {
-//
-//        recreate();
-//
-//    }
-//
-//    public void clickDashboard(View v) {
-//
-//
-//    }
-//
-//
-//    private void redirectActivity(Activity act, Class aClass) {
-//
-//        Intent intent = new Intent(act, aClass);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        act.startActivity(intent);
-//    }
 
     public void clickProgress(View v) {
 
-        MyProgressDialogFragment fragment_progress = new MyProgressDialogFragment();
-        fragment_progress.show(getSupportFragmentManager(), "MyProgressFragment");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        getUsersLessonData(databaseReference);
 
+    }
+
+
+    private void getUsersLessonData(DatabaseReference databaseReference) {
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses").child(lang);
+                for (DataSnapshot userSnapshot : usersSnapshot.getChildren()) {
+                    fetchDataLesson(userSnapshot);
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(DashBoard.this);
+                builder.setTitle("Progress in Course");
+                String progressValue = languageProgress_map.get("progress");
+
+
+                builder.setMessage("Progress is " + progressValue);
+                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        dialogInterface.dismiss();
+
+                    }
+                });
+                builder.show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i(TAG, error.getMessage());
+            }
+        };
+        databaseReference.addValueEventListener(valueEventListener);
+    }
+
+
+    private void fetchDataLesson(DataSnapshot userSnapshot) {
+
+        String keyValue = userSnapshot.getKey();
+        Long value = userSnapshot.getValue(Long.class);
+        Toast.makeText(this, "key *****is " + keyValue + " " + value, Toast.LENGTH_LONG).show();
+        languageProgress_map.put(keyValue, String.valueOf(value));
     }
 
     public void clickLogout(View v) {

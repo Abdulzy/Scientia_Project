@@ -2,10 +2,12 @@ package edu.neu.course.project;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,7 +54,7 @@ public class Home extends Fragment {
     private TextView current_course;
     private ImageButton home;
     private ImageButton account;
-    private Map<Lesson, String> progress;
+    private Map<String, String> languageProgress_map;
 
 
     public Home() {
@@ -66,6 +69,7 @@ public class Home extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false);
         rLayoutManger = new LinearLayoutManager(this.getContext());
+        languageProgress_map = new HashMap<>();
         rview = v.findViewById(R.id.rcv_user);
         rview.setHasFixedSize(true);
         rview.setLayoutManager(rLayoutManger);
@@ -79,7 +83,6 @@ public class Home extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         reference_users = FirebaseDatabase.getInstance().getReference("Users");
-        progress = new HashMap<>();
         getData();
     }
 
@@ -97,10 +100,19 @@ public class Home extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 lessonsMap = new HashMap<>();
-                DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses");
+                DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses").child(language);
                 for (DataSnapshot userSnapshot : usersSnapshot.getChildren()) {
                     fetchDataLesson(userSnapshot);
+
                 }
+                String progressValue = languageProgress_map.get("progress");
+                MyProgressDialogFragment frag = new MyProgressDialogFragment();
+//                Intent intent1 = new Intent(getContext(), MyProgressDialogFragment.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("progressValue", progressValue);
+                bundle.putString("username", user);
+                frag.setArguments(bundle);
+//                getParentFragmentManager().setFragmentResult("dataFromHome", bundle);
                 Log.d(TAG, "lessons " + lessonsArray_user);
                 rviewAdapter.notifyDataSetChanged();
             }
@@ -150,9 +162,10 @@ public class Home extends Fragment {
 
     private void fetchDataLesson(DataSnapshot userSnapshot) {
 
-        Long number_totalLessons = userSnapshot.child("TotalLessons").getValue(Long.class);
-        Long completed = userSnapshot.child("completed").getValue(Long.class);
-        Long progress = userSnapshot.child("progress").getValue(Long.class);
+        String keyValue = userSnapshot.getKey();
+        Long value = userSnapshot.getValue(Long.class);
+//        Toast.makeText(getContext(), "key is " + keyValue + " " + value, Toast.LENGTH_LONG).show();
+        languageProgress_map.put(keyValue, String.valueOf(value));
 
     }
 }
