@@ -36,11 +36,12 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
     }
 
     public void dash(View view) {
-        Intent intent = new Intent(this, DashBoard.class);
-        intent.putExtra("user", "Meera");
-        intent.putExtra("chosenKnownLanguage", selectedKnownLanguage);
-        intent.putExtra("chosenLearnLanguage", selectedKnownLanguage);
-        startActivity(intent);
+        this.finish();
+//        Intent intent = new Intent(this, DashBoard.class);
+//        intent.putExtra("user", "Meera");
+//        intent.putExtra("chosenKnownLanguage", selectedKnownLanguage);
+//        intent.putExtra("chosenLearnLanguage", selectedKnownLanguage);
+//        startActivity(intent);
     }
 
     @Override
