@@ -27,7 +27,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/cool"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
         />
 

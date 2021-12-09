@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DashBoard">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_layout"
         android:layout_width="411dp"
@@ -32,10 +31,9 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/const_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.078"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/const_layout"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintTop_toTopOf="@id/const_layout" />
 
         <TextView
             android:id="@+id/language_id"
