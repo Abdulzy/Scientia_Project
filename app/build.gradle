@@ -30,6 +30,7 @@ android {
 
 dependencies {
 
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
     def frag_version = '1.3.4'
     implementation "androidx.fragment:fragment:$frag_version"
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
