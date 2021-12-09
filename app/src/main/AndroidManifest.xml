@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
+            android:name=".AboutUs"
+            android:exported="true" />
+        <activity
             android:name=".DashBoard"
             android:exported="true" />
         <activity
