@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void language(View view) {
-        Intent intent = new Intent(MainActivity.this, LanguageActivity.class);
+        Intent intent = new Intent(MainActivity.this, DashBoard.class);
         startActivity(intent);
     }
 

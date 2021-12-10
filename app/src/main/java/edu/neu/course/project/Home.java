@@ -32,7 +32,6 @@ import java.util.List;
 import java.util.Map;
 
 import edu.neu.course.project.activity.AdapterClass;
-//import edu.neu.course.project.activity.LanguageLessons;
 import edu.neu.course.project.data.Lesson;
 
 public class Home extends Fragment {

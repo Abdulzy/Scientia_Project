@@ -85,8 +85,8 @@
             tools:layout_editor_absoluteY="2dp" />
 
         <ImageButton
-            android:layout_width="73dp"
-            android:layout_height="32dp"
+            android:layout_width="46dp"
+            android:layout_height="36dp"
             android:onClick="clickLogout"
             android:src="@drawable/ic_logout"
             app:layout_constraintBottom_toBottomOf="parent"

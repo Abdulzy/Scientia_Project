@@ -49,6 +49,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
 
         Lesson lesson = lessons.get(position);
 //        Picasso.with(context).load(lesson.getImageLink()).into(holder.image);
+        Glide.with(context).load(lessons.get(position).getImageLink()).into(holder.image);
         Log.d("TAG", "image link is " + lesson.getImageLink());
         holder.text.setText(lesson.getLessonName());
 
