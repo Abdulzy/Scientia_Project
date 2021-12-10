@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
-            android:name=".AboutUs"
-            android:exported="true" />
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".DashBoard"
             android:exported="true" />
@@ -19,12 +25,17 @@
             android:name=".LanguageActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.LOGIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.REGISTER" />
             </intent-filter>
         </activity>
     </application>
