@@ -25,6 +25,7 @@
         android:onClick="toAudio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionMode" />
+        app:layout_constraintTop_toBottomOf="@+id/QuestionMode"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
