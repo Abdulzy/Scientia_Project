@@ -1,5 +1,7 @@
 package edu.neu.course.project;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,11 +14,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class Audio extends AppCompatActivity {
-    private List<Integer> usedOptions;
+    private int usedOptions = -1;
     private List<String> russianOptions;
     private List<String> koreanOptions;
     private List<String> hindiOptions;
@@ -32,6 +36,10 @@ public class Audio extends AppCompatActivity {
         setContentView(R.layout.activity_audio);
         mSpeak = findViewById(R.id.button_speak);
         mChange = findViewById(R.id.button_change);
+        russianOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.russian)));
+        koreanOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.korean)));
+        hindiOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi)));
+        englishOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english)));
 
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -69,14 +77,6 @@ public class Audio extends AppCompatActivity {
                 change();
             }
         });
-
-        usedOptions = new ArrayList<>();
-//        russianOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.russian)));
-//        koreanOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.korean)));
-//        hindiOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi)));
-//        englishOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english)));
-
-        //Toast.makeText(this, "You have selected " + russianOptions.get(0) + englishOptions.get(0), Toast.LENGTH_LONG).show();
     }
 
     private void speak() {
@@ -86,6 +86,16 @@ public class Audio extends AppCompatActivity {
 
 
     private void change() {
+        if(usedOptions < 4){
+            usedOptions++;
+            englishWord.setText(englishOptions.get(usedOptions));
+            otherWord.setText(koreanOptions.get(usedOptions));
+        }
+        else{
+            usedOptions = 0;
+            englishWord.setText(englishOptions.get(usedOptions));
+            otherWord.setText(koreanOptions.get(usedOptions));
+        }
 
     }
 
