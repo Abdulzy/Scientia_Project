@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,9 +57,7 @@ public class AlphabetsQuestions extends AppCompatActivity {
 
     private void getData() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-//        Thread userThread = new Thread(() -> getQuestions(databaseReference));
         Thread questionDataThread = new Thread(() -> getQuestionData(databaseReference));
-//        userThread.start();
         questionDataThread.start();
     }
 
@@ -79,7 +76,6 @@ public class AlphabetsQuestions extends AppCompatActivity {
 
                         for (DataSnapshot question : lessons.child("Questions").getChildren()) {
                             fetchData(question);
-                            Log.d("Tag", "Questions "+ questionsArray);
                         }
                     }
                 }
@@ -104,10 +100,6 @@ public class AlphabetsQuestions extends AppCompatActivity {
         String option3 = question.child("option3").getValue(String.class);
         QuestionData qd = new QuestionData(q, ans, option1, option2, option3);
         questionsArray.add(qd);
-
-    }
-
-    private void getQuestions(DatabaseReference databaseReference) {
 
     }
 }

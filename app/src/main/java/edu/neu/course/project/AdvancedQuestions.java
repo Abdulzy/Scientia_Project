@@ -49,7 +49,6 @@ public class AdvancedQuestions extends AppCompatActivity {
         rviewAdapter = new AdapterQuestion(questionsArray, this, user, learningLanguage, level);
         rview.setAdapter(rviewAdapter);
         rview.setLayoutManager(rLayoutManger);
-        title.setText("Advanced");
         question.setText("Click the right option for the word");
         getData();
 
@@ -57,9 +56,7 @@ public class AdvancedQuestions extends AppCompatActivity {
 
     private void getData() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-//        Thread userThread = new Thread(() -> getQuestions(databaseReference));
         Thread questionDataThread = new Thread(() -> getQuestionData(databaseReference));
-//        userThread.start();
         questionDataThread.start();
     }
 
@@ -77,7 +74,6 @@ public class AdvancedQuestions extends AppCompatActivity {
                     if (lessons.child("lesson").getValue(String.class).equals("Advanced")) {
                         for (DataSnapshot question : lessons.child("Questions").getChildren()) {
                             fetchData(question);
-                            Log.d("Tag", "Questions "+ questionsArray);
                         }
                     }
                 }
@@ -102,10 +98,6 @@ public class AdvancedQuestions extends AppCompatActivity {
         String option3 = question.child("option3").getValue(String.class);
         QuestionData qd = new QuestionData(q, ans, option1, option2, option3);
         questionsArray.add(qd);
-
-    }
-
-    private void getQuestions(DatabaseReference databaseReference) {
 
     }
 }
