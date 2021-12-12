@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,8 @@ public class AdvancedQuestions extends AppCompatActivity {
     private RecyclerView rview;
     private AdapterQuestion rviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
+    private TextView title;
+    private TextView question;
 
 
 
@@ -39,12 +42,15 @@ public class AdvancedQuestions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabets_questions);
         rLayoutManger = new LinearLayoutManager(this);
+        question = findViewById(R.id.question_id);
         rview = findViewById(R.id.rcv_qns);
         rview.setHasFixedSize(true);
         rview.setLayoutManager(rLayoutManger);
         rviewAdapter = new AdapterQuestion(questionsArray, this, user, learningLanguage, level);
         rview.setAdapter(rviewAdapter);
         rview.setLayoutManager(rLayoutManger);
+        title.setText("Advanced");
+        question.setText("Click the right option for the word");
         getData();
 
     }

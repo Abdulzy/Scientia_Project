@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +39,7 @@ public class Question extends AppCompatActivity {
     private AdapterClass rviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
     private Map<String, String> languageCompleted_map;
+    private TextView foreignLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class Question extends AppCompatActivity {
         rview.setAdapter(rviewAdapter);
         rview.setLayoutManager(rLayoutManger);
         reference_users = FirebaseDatabase.getInstance().getReference("Users");
+        foreignLanguage = findViewById(R.id.language_id);
+        foreignLanguage.setText(language);
         getData();
     }
 

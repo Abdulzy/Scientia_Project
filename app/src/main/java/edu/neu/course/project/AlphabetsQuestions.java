@@ -32,8 +32,8 @@ public class AlphabetsQuestions extends AppCompatActivity {
     private RecyclerView rview;
     private AdapterQuestion rviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
-    private TextView option1;
-    private TextView option2;
+    private TextView title;
+    private TextView question;
     private TextView option3;
 
 
@@ -42,6 +42,7 @@ public class AlphabetsQuestions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabets_questions);
+        question = findViewById(R.id.question_id);
         rLayoutManger = new LinearLayoutManager(this);
         rview = findViewById(R.id.rcv_qns);
         rview.setHasFixedSize(true);
@@ -49,6 +50,7 @@ public class AlphabetsQuestions extends AppCompatActivity {
         rviewAdapter = new AdapterQuestion(questionsArray, this, user, learningLanguage, level);
         rview.setAdapter(rviewAdapter);
         rview.setLayoutManager(rLayoutManger);
+        question.setText("Click the right option for the alphabet");
         getData();
     }
 
