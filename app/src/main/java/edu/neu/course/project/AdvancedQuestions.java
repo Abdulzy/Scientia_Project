@@ -23,7 +23,7 @@ import java.util.Map;
 public class AdvancedQuestions extends AppCompatActivity {
 
     private String user = "Meera";
-    private String learningLanguage = "Russian";
+    private String learningLanguage = "Hindi";
     private String level = "Advanced";
     private ArrayList<QuestionData> questionsArray = new ArrayList<>();
     private Map<String, QuestionData> questionsMap;
@@ -69,7 +69,6 @@ public class AdvancedQuestions extends AppCompatActivity {
                 for (DataSnapshot lessons : usersSnapshot.getChildren()) {
 
                     if (lessons.child("lesson").getValue(String.class).equals("Advanced")) {
-
                         for (DataSnapshot question : lessons.child("Questions").getChildren()) {
                             fetchData(question);
                             Log.d("Tag", "Questions "+ questionsArray);

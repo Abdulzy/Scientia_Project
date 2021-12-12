@@ -23,15 +23,13 @@ import java.util.Map;
 public class BasicsQuestions extends AppCompatActivity {
 
     private String user = "Meera";
-    private String learningLanguage = "Russian";
+    private String learningLanguage = "Hindi";
     private String level = "Basics";
     private ArrayList<QuestionData> questionsArray = new ArrayList<>();
     private Map<String, QuestionData> questionsMap;
     private RecyclerView rview;
     private AdapterQuestion rviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
-
-
 
 
     @Override

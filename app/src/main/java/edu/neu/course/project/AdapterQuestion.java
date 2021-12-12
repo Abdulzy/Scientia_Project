@@ -50,7 +50,7 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
         this.level = lessonLevel;
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        databaseReference.child("Users").child(user).child("courses").child(lang).child("Lessons").child(level).setValue(0);
+        databaseReference.child("Users").child(user).child("courses").child(lang).child("Lessons").child(level).child("progress").setValue(0);
 
     }
 
@@ -148,7 +148,6 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
 
     private void fetchProgress(DatabaseReference dbRef, String result) {
 
-
         ValueEventListener valueEventListener = new ValueEventListener() {
 
             @Override
@@ -157,8 +156,7 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                 for (DataSnapshot lessons : usersSnapshot.getChildren()) {
 
                     if(lessons.getKey().equals(level)) {
-                        Long progress = lessons.getValue(Long.class);
-//                        Toast.makeText(context, "The value is " + progress + " " + lessons.getKey(), Toast.LENGTH_SHORT).show();
+                        Long progress = lessons.child("progress").getValue(Long.class);
                         if(result.equals("correct")) {
                             progress = progress + 1;
 
@@ -167,6 +165,8 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                             progress = progress - 1;
                         }
                         if(progress >= qArray.size()) {
+                            dbRef.child("Users").child(user).child("courses").child(lang)
+                                    .child("Lessons").child(level).child("completed").setValue("yes");
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             builder.setTitle("Progress in Course");
                             builder.setMessage("Hey " + user + "! You have completed level " + level +
@@ -178,9 +178,11 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                                     dialogInterface.dismiss();
                                 }
                             });
+
                             builder.show();
                         }
-                        dbRef.child("Users").child(user).child("courses").child(lang).child("Lessons").child(level).setValue(progress);
+                        dbRef.child("Users").child(user).child("courses").child(lang)
+                                .child("Lessons").child(level).child("progress").setValue(progress);
                     }
                 }
             }

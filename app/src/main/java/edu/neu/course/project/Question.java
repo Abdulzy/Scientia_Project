@@ -30,19 +30,19 @@ public class Question extends AppCompatActivity {
     private DatabaseReference reference_users, reference_lessons;
     private Map<String, List<Lesson>> lessonsMap = new HashMap<>();
     private String user = "Meera";
-    private String language = "Korean";
+    private String language = "Hindi";
     private ArrayList<Lesson> lessonsArray_user = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterClass rviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
-    private Map<String, String> languageProgress_map;
+    private Map<String, String> languageCompleted_map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
         rLayoutManger = new LinearLayoutManager(this);
-        languageProgress_map = new HashMap<>();
+        languageCompleted_map = new HashMap<>();
         rview = findViewById(R.id.rcv_user);
         rview.setHasFixedSize(true);
         rview.setLayoutManager(rLayoutManger);
@@ -64,16 +64,15 @@ public class Question extends AppCompatActivity {
 
     private void getUserLessonData(DatabaseReference databaseReference) {
 
-        String progressValue = "100";
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 lessonsMap = new HashMap<>();
-                DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses").child(language);
+                DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses").child(language).child("Lessons");
                 for (DataSnapshot userSnapshot : usersSnapshot.getChildren()) {
                     fetchDataLesson(userSnapshot);
                 }
-                String progressValue = languageProgress_map.get("progress");
+                String completedValue = languageCompleted_map.get("completed");
                 rviewAdapter.notifyDataSetChanged();
             }
 
@@ -106,7 +105,7 @@ public class Question extends AppCompatActivity {
                 Log.i(TAG, error.getMessage());
             }
         };
-        databaseReference.addValueEventListener(valueEventListener);
+        databaseReference.addListenerForSingleValueEvent(valueEventListener);
     }
 
     private void fetchData( DataSnapshot userSnapshot) {
@@ -122,9 +121,9 @@ public class Question extends AppCompatActivity {
 
     private void fetchDataLesson(DataSnapshot userSnapshot) {
 
-        String keyValue = userSnapshot.getKey();
-        Long value = userSnapshot.getValue(Long.class);
-        languageProgress_map.put(keyValue, String.valueOf(value));
+        Long progress = userSnapshot.child("progress").getValue(Long.class);
+        String completed = userSnapshot.child("completed").getValue(String.class);
+        languageCompleted_map.put("completed", completed);
 
     }
 }

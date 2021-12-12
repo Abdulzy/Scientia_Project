@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class AlphabetsQuestions extends AppCompatActivity {
 
     private String user = "Meera";
-    private String learningLanguage = "Russian";
+    private String learningLanguage = "Hindi";
     private String level = "Alphabets";
     private ArrayList<QuestionData> questionsArray = new ArrayList<>();
     private HashMap<String, QuestionData> questionsMap;
@@ -50,7 +50,6 @@ public class AlphabetsQuestions extends AppCompatActivity {
         rview.setAdapter(rviewAdapter);
         rview.setLayoutManager(rLayoutManger);
         getData();
-
     }
 
 

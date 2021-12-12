@@ -1,8 +1,11 @@
 package edu.neu.course.project.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,27 +64,69 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        DataSnapshot usersSnapshot = dataSnapshot.child("Users").child(user).child("courses").child("English").child("Lessons").child(lesson.lessonName);
-                        Long progress = usersSnapshot.getValue(Long.class);
-                        Toast.makeText(context, "*****" + String.valueOf(progress), Toast.LENGTH_SHORT).show();
+                        DataSnapshot usersSnapshot = dataSnapshot.child("Users").child(user)
+                                .child("courses").child("Hindi").child("Lessons").child(lesson.lessonName).child("completed");
+                        String completed = usersSnapshot.getValue(String.class);
+                        if (completed.equals("yes")) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setTitle("Progress in Course");
+                            builder.setMessage("Hi " + user + "! You have completed this level already." +
+                                    " Do you want to retake the lesson?");
+                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    if (lesson.lessonName.equals("Alphabets")) {
+                                        Intent intent = new Intent(context, AlphabetsQuestions.class);
+                                        context.startActivity(intent);
+                                    }
+                                    else if (lesson.lessonName.equals("Basics")) {
+                                        Intent intent = new Intent(context, BasicsQuestions.class);
+                                        context.startActivity(intent);
+                                    }
+                                    else if (lesson.lessonName.equals("Advanced")) {
+                                        Intent intent = new Intent(context, AdvancedQuestions.class);
+                                        context.startActivity(intent);
+                                    }
+
+                                }
+                            });
+                            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
+                            builder.show();
+                        }
+                        else {
+
+                            if (lesson.lessonName.equals("Alphabets")) {
+                                Intent intent = new Intent(context, AlphabetsQuestions.class);
+                                context.startActivity(intent);
+                            }
+                            else if (lesson.lessonName.equals("Basics")) {
+                                Intent intent = new Intent(context, BasicsQuestions.class);
+                                context.startActivity(intent);
+                            }
+                            else if (lesson.lessonName.equals("Advanced")) {
+                                Intent intent = new Intent(context, AdvancedQuestions.class);
+                                context.startActivity(intent);
+                            }
+
+                        }
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
+//                Handler handler = new Handler();
+//                handler.postDelayed(new Runnable() {
+//                    public void run() {
+//
+//
+//                    }
+//                }, 5000);
 
-                if (lesson.lessonName.equals("Alphabets")) {
-                    Intent intent = new Intent(context, AlphabetsQuestions.class);
-                    context.startActivity(intent);
-                }
-                else if (lesson.lessonName.equals("Basics")) {
-                    Intent intent = new Intent(context, BasicsQuestions.class);
-                    context.startActivity(intent);
-                }
-                else if (lesson.lessonName.equals("Advanced")) {
-                    Intent intent = new Intent(context, AdvancedQuestions.class);
-                    context.startActivity(intent);
-                }
             }
         });
         holder.text.setText(lesson.getLessonName());
