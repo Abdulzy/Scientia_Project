@@ -27,9 +27,10 @@
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/main_toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/menu/bottom_menu.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_textview_border.xml" value="0.2824074074074074" />
-        <entry key="app/src/main/res/layout/activity_alphabets_questions.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_alphabets_questions.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_lesson_card.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_question_card.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_question_card.xml" value="0.25" />
       </map>
     </option>
   </component>

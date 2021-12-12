@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,7 +72,6 @@ public class Question extends AppCompatActivity {
                 DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses").child(language);
                 for (DataSnapshot userSnapshot : usersSnapshot.getChildren()) {
                     fetchDataLesson(userSnapshot);
-
                 }
                 String progressValue = languageProgress_map.get("progress");
                 rviewAdapter.notifyDataSetChanged();

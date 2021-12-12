@@ -13,6 +13,12 @@
             android:name=".AlphabetsQuestions"
             android:exported="true" />
         <activity
+            android:name=".AdvancedQuestions"
+            android:exported="true" />
+        <activity
+            android:name=".BasicsQuestions"
+            android:exported="true" />
+        <activity
             android:name=".Question"
             android:exported="true" />
         <activity

@@ -22,7 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import edu.neu.course.project.AdvancedQuestions;
 import edu.neu.course.project.AlphabetsQuestions;
+import edu.neu.course.project.BasicsQuestions;
 import edu.neu.course.project.R;
 import edu.neu.course.project.data.Lesson;
 
@@ -68,8 +70,18 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
                     }
                 });
 
-                Intent intent = new Intent(context, AlphabetsQuestions.class);
-                context.startActivity(intent);
+                if (lesson.lessonName.equals("Alphabets")) {
+                    Intent intent = new Intent(context, AlphabetsQuestions.class);
+                    context.startActivity(intent);
+                }
+                else if (lesson.lessonName.equals("Basics")) {
+                    Intent intent = new Intent(context, BasicsQuestions.class);
+                    context.startActivity(intent);
+                }
+                else if (lesson.lessonName.equals("Advanced")) {
+                    Intent intent = new Intent(context, AdvancedQuestions.class);
+                    context.startActivity(intent);
+                }
             }
         });
         holder.text.setText(lesson.getLessonName());

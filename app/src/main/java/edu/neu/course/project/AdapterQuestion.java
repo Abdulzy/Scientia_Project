@@ -2,6 +2,7 @@ package edu.neu.course.project;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,18 +42,23 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
     TextView opt3;
     String level;
 
-    public AdapterQuestion(ArrayList<QuestionData> questionsArray, AlphabetsQuestions questions, String user, String learningLanguage, String lessonLevel) {
+    public AdapterQuestion(ArrayList<QuestionData> questionsArray, Activity questions, String user, String learningLanguage, String lessonLevel) {
         this.qArray = questionsArray;
         this.context = questions;
         this.user = user;
         this.lang = learningLanguage;
         this.level = lessonLevel;
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        databaseReference.child("Users").child(user).child("courses").child(lang).child("Lessons").child(level).setValue(0);
 
     }
 
     @NonNull
     @Override
     public QuestionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+
         View view = LayoutInflater.from(context).inflate(R.layout.activity_question_card, parent, false);
         return new AdapterQuestion.QuestionViewHolder(view);
 
@@ -62,7 +68,6 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
     @Override
     public void onBindViewHolder(@NonNull QuestionViewHolder holder, int position) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Users").child(user).child("courses").child(lang).child("Lessons").child(level).setValue(0);
         QuestionData currentItem = (QuestionData) qArray.get(position);
         holder.qQuestion.setText(currentItem.getqQuestion());
         holder.option1.setText(currentItem.getOption1());
@@ -92,7 +97,6 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                     }
                     holder.result.setText("INCORRECT");
 
-
                 }
             }
         });
@@ -105,10 +109,8 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                     holder.result.setBackgroundColor(Color.GREEN);
                     if (holder.result.getText().equals("Result") || holder.result.getText().equals("INCORRECT")) {
                         fetchProgress(databaseReference, "correct");
-
                     }
                     holder.result.setText("CORRECT");
-
                 }
                 else {
                     holder.result.setBackgroundColor(Color.RED);
@@ -129,10 +131,8 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                     holder.result.setBackgroundColor(Color.GREEN);
                     if (holder.result.getText().equals("Result") || holder.result.getText().equals("INCORRECT")) {
                         fetchProgress(databaseReference, "correct");
-
                     }
                     holder.result.setText("CORRECT");
-
                 }
                 else {
                     holder.result.setBackgroundColor(Color.RED);
@@ -140,14 +140,13 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                         fetchProgress(databaseReference, "incorrect");
                     }
                     holder.result.setText("INCORRECT");
-
                 }
             }
         });
 
     }
 
-    private int fetchProgress(DatabaseReference dbRef, String result) {
+    private void fetchProgress(DatabaseReference dbRef, String result) {
 
 
         ValueEventListener valueEventListener = new ValueEventListener() {
@@ -159,7 +158,6 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
 
                     if(lessons.getKey().equals(level)) {
                         Long progress = lessons.getValue(Long.class);
-
 //                        Toast.makeText(context, "The value is " + progress + " " + lessons.getKey(), Toast.LENGTH_SHORT).show();
                         if(result.equals("correct")) {
                             progress = progress + 1;
@@ -194,7 +192,6 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
         };
 
         dbRef.addListenerForSingleValueEvent(valueEventListener);
-        return 0;
     }
 
     @Override
@@ -214,7 +211,7 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
 
         public QuestionViewHolder(@NonNull View itemView) {
             super(itemView);
-            qTitle = itemView.findViewById(R.id.textView_title);
+//            qTitle = itemView.findViewById(R.id.textView_title);
             qQuestion = itemView.findViewById(R.id.textView_question);
             option1 = itemView.findViewById(R.id.textView_option1);
             option2 = itemView.findViewById(R.id.textView_option2);
