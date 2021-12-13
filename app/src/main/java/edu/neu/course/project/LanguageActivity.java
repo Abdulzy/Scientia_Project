@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class LanguageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner knownLanguage;
-    Spinner learnLanguage;
+    private String currentUser;
+    private String currentToken;
     ArrayAdapter<String> adapter;
     private String selectedLearnLanguage;
     private Spinner spinner2;
@@ -23,15 +23,22 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
         spinner2 = findViewById(R.id.learnLanguage);
-        adapter = new ArrayAdapter<String>(LanguageActivity.this,
+        Intent intent = getIntent();
+        currentUser = intent.getStringExtra("sender");
+        currentToken = intent.getStringExtra("token");
+        adapter = new ArrayAdapter<>(LanguageActivity.this,
                 android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.languages));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter);
         spinner2.setOnItemSelectedListener(this);
     }
 
-    public void dash(View view) {
-        this.finish();
+    public void toGame(View view) {
+        Intent intent = new Intent(LanguageActivity.this, Play.class);
+        intent.putExtra("sender", currentUser);
+        intent.putExtra("token", currentToken);
+        intent.putExtra("language", selectedLearnLanguage);
+        startActivity(intent);
     }
 
     @Override

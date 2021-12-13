@@ -7,11 +7,36 @@
     tools:context=".Audio">
 
     <TextView
+        android:id="@+id/englishHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="English"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/englishText"
+        app:layout_constraintEnd_toStartOf="@+id/otherHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/otherHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Foreign"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/otherText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/englishHeader"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/englishText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Good morning"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/otherText"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +48,7 @@
         android:layout_height="wrap_content"
         android:text="joh-eun achim"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/englishText"
@@ -35,7 +61,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:enabled="false"
-        android:onClick="speak"
         android:text="Say it!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_change"

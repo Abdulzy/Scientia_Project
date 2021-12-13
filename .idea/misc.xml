@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable-anydpi/ic_profile.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable-v24/card_backgroundcolor.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/ic_menu.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/ic_more.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/ic_setting.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/ic_social.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/ic_textview_border.xml" value="0.3828125" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/drawable/textview_border.xml" value="0.22552083333333334" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout-land/activity_dash.xml" value="0.16358024691358025" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout-land/activity_lesson_card.xml" value="0.16358024691358025" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout-land/fragment_home.xml" value="0.31040564373897706" />
@@ -19,6 +29,7 @@
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/activity_main_menu.xml" value="0.1" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/activity_play.xml" value="0.20520833333333333" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/activity_question.xml" value="0.1" />
+        <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.20572916666666666" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/dialog_fragment.xml" value="0.19322916666666667" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
@@ -27,18 +38,13 @@
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/layout/main_toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/old laptop/Documents/MY CLASSES/School/masters/CLASSES/Fall 2021/App Development/Assignments/Scientia_Project/app/src/main/res/menu/bottom_menu.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_textview_border.xml" value="0.2824074074074074" />
-        <entry key="app/src/main/res/layout-land/activity_alphabets_questions.xml" value="0.14858906525573193" />
-        <entry key="app/src/main/res/layout-land/activity_lesson_card.xml" value="0.14858906525573193" />
-        <entry key="app/src/main/res/layout-land/activity_question.xml" value="0.14858906525573193" />
-        <entry key="app/src/main/res/layout/activity_alphabets_questions.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_audio.xml" value="0.17552083333333332" />
-        <entry key="app/src/main/res/layout/activity_lesson_card.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/layout/activity_alphabets_questions.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_question_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_question_card.xml" value="0.15070921985815602" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

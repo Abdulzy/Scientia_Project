@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">project</string>
 
+    <string name="channel_name">Scientia Project</string>
+    <string name="channel_id">channel_Scientia</string>
+    <string name="msg_token_fmt">FCM registration Token: %s</string>
     <string-array name="languages">
-        <item>Korean</item>
-        <item>Russian</item>
-        <item>Hindi</item>
+        <item>korean</item>
+        <item>french</item>
+        <item>german</item>
     </string-array>
 
     <string-array name="english">
@@ -13,6 +16,26 @@
         <item>Good night</item>
         <item>My name is</item>
         <item>How are you</item>
+        <item>Thank you</item>
+    </string-array>
+
+    <string-array name="german">
+        <item>Guten Morgen</item>
+        <item>guten Tag</item>
+        <item>Gute Nacht</item>
+        <item>Mein Name ist</item>
+        <item>Wie geht es dir</item>
+        <item>Danke schön</item>
+    </string-array>
+
+
+    <string-array name="french">
+        <item>Bonjour</item>
+        <item>Bon après-midi</item>
+        <item>Bonne nuit</item>
+        <item>Mon nom est</item>
+        <item>Comment vas-tu</item>
+        <item>Merci</item>
     </string-array>
 
 
@@ -22,23 +45,7 @@
         <item>annyeonghi jumuseyo</item>
         <item>nae ileum-eun</item>
         <item>jal jinaego issnayo</item>
-    </string-array>
-
-
-    <string-array name="russian">
-        <item>Dobroye utro</item>
-        <item>Dobryy den</item>
-        <item>Spokoynoy nochi</item>
-        <item>Menya zovut</item>
-        <item>Kak dela</item>
-    </string-array>
-
-    <string-array name="hindi">
-        <item>subah bakhair</item>
-        <item>namaskaar</item>
-        <item>shubh raatri</item>
-        <item>mera naam hai</item>
-        <item>aap kaise hain</item>
+        <item>gamsahabnida</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
