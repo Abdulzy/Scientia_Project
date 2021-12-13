@@ -2,6 +2,7 @@ package edu.neu.course.project;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -23,8 +24,8 @@ import java.util.Map;
 
 public class BasicsQuestions extends AppCompatActivity {
 
-    private String user = "Meera";
-    private String learningLanguage = "Hindi";
+    private String user;
+    private String learningLanguage;
     private String level = "Basics";
     private ArrayList<QuestionData> questionsArray = new ArrayList<>();
     private Map<String, QuestionData> questionsMap;
@@ -41,6 +42,9 @@ public class BasicsQuestions extends AppCompatActivity {
         setContentView(R.layout.activity_alphabets_questions);
         rLayoutManger = new LinearLayoutManager(this);
         question = findViewById(R.id.question_id);
+        Intent intent = getIntent();
+        user = intent.getStringExtra("sender");
+        learningLanguage = intent.getStringExtra("language");
         rview = findViewById(R.id.rcv_qns);
         rview.setHasFixedSize(true);
         rview.setLayoutManager(rLayoutManger);

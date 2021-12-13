@@ -65,7 +65,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         DataSnapshot usersSnapshot = dataSnapshot.child("Users").child(user)
-                                .child("courses").child("Hindi").child("Lessons").child(lesson.lessonName).child("completed");
+                                .child("courses").child(lang).child("Lessons").child(lesson.lessonName).child("completed");
                         String completed = usersSnapshot.getValue(String.class);
                         if (completed.equals("yes")) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -102,14 +102,20 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
 
                             if (lesson.lessonName.equals("Alphabets")) {
                                 Intent intent = new Intent(context, AlphabetsQuestions.class);
+                                intent.putExtra("sender", user);
+                                intent.putExtra("language", lang);
                                 context.startActivity(intent);
                             }
                             else if (lesson.lessonName.equals("Basics")) {
                                 Intent intent = new Intent(context, BasicsQuestions.class);
+                                intent.putExtra("sender", user);
+                                intent.putExtra("language", lang);
                                 context.startActivity(intent);
                             }
                             else if (lesson.lessonName.equals("Advanced")) {
-                                Intent intent = new Intent(context, AdvancedQuestions.class);
+                                Intent intent = new Intent(context, AlphabetsQuestions.class);
+                                intent.putExtra("sender", user);
+                                intent.putExtra("language", lang);
                                 context.startActivity(intent);
                             }
 

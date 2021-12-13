@@ -36,10 +36,7 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
     String user;
     String lang;
     ArrayList qArray;
-    TextView opt1;
-    TextView opt2;
-    QuestionData item;
-    TextView opt3;
+
     String level;
 
     public AdapterQuestion(ArrayList<QuestionData> questionsArray, Activity questions, String user, String learningLanguage, String lessonLevel) {
@@ -155,16 +152,21 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
 
                     if(lessons.getKey().equals(level)) {
                         Long progress = lessons.child("progress").getValue(Long.class);
+                        String completed = lessons.child("completed").getValue(String.class);
                         if(result.equals("correct")) {
                             progress = progress + 1;
+                            Toast.makeText(context, "progress is " + progress, Toast.LENGTH_SHORT).show();
 
                         }
                         else if (result.equals("incorrect") && progress != 0) {
                             progress = progress - 1;
                         }
                         if(progress >= qArray.size()) {
+                            Progress updatedprogress = new Progress(progress, "yes");
                             dbRef.child("Users").child(user).child("courses").child(lang)
-                                    .child("Lessons").child(level).child("completed").setValue("yes");
+                                    .child("Lessons").child(level).child("progress").setValue(updatedprogress);
+//                            dbRef.child("Users").child(user).child("courses").child(lang)
+//                                    .child("Lessons").child(level).child("completed").setValue("yes");
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             builder.setTitle("Progress in Course");
                             builder.setMessage("Hey " + user + "! You have completed level " + level +
@@ -179,8 +181,12 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
 
                             builder.show();
                         }
+                        Progress updatedprogress = new Progress(progress, completed);
+//                        HashMap<String, Long> progressmap;
+//                        progressmap.put("progress", )
                         dbRef.child("Users").child(user).child("courses").child(lang)
-                                .child("Lessons").child(level).child("progress").setValue(progress);
+                                .child("Lessons").child(level).child("progress").setValue(updatedprogress);
+
                     }
                 }
             }

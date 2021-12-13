@@ -3,6 +3,8 @@ package edu.neu.course.project;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,8 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.messaging.FirebaseMessaging;
+//import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             etLoginPassword.requestFocus();
         }
         else{
-            reference.addValueEventListener(new ValueEventListener() {
+            ValueEventListener valueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Log.i(TAG, "inside the listener");
@@ -82,20 +82,39 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("sender", userName);
                             startActivity(intent);
                         }else{
-                            Toast.makeText(getApplicationContext(), "Password is incorrect! ", Toast.LENGTH_LONG).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                            builder.setTitle("INCORRECT PASSWORD");
+                            builder.setMessage("Please check your password again and enter");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+
+                                }
+                            });
+                            builder.show();
                         }
                     }else{
-                        Toast.makeText(getApplicationContext(), "Username is incorrect! ", Toast.LENGTH_LONG).show();
-                    }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setTitle("INCORRECT USERNAME");
+                        builder.setMessage("Please check your username again and enter");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+
+                            }
+                        });
+                        builder.show();                    }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
-
                 }
-            });
+            };
+            reference.addListenerForSingleValueEvent(valueEventListener);
+
         }
     }
-
 }

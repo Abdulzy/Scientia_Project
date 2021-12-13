@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
             etRegPassword.requestFocus();
         }
         else{
-            reference.addValueEventListener(new ValueEventListener() {
+            ValueEventListener ve = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Log.i(TAG, "inside the listener");
@@ -87,7 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 }
-            });
+            };
+            reference.addListenerForSingleValueEvent(ve);
         }
     }
 

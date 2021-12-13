@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -32,8 +33,9 @@ public class Question extends AppCompatActivity {
     RecyclerView rview;
     private DatabaseReference reference_users, reference_lessons;
     private Map<String, List<Lesson>> lessonsMap = new HashMap<>();
-    private String user = "Meera";
-    private String language = "Hindi";
+    private String user;
+    private String token;
+    private String language;
     private ArrayList<Lesson> lessonsArray_user = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterClass rviewAdapter;
@@ -49,6 +51,10 @@ public class Question extends AppCompatActivity {
         languageCompleted_map = new HashMap<>();
         rview = findViewById(R.id.rcv_user);
         rview.setHasFixedSize(true);
+        Intent intent = getIntent();
+        user = intent.getStringExtra("sender");
+        language = intent.getStringExtra("language");
+        token = intent.getStringExtra("token");
         rview.setLayoutManager(rLayoutManger);
         rviewAdapter = new AdapterClass(lessonsArray_user, this, user, language);
         rview.setAdapter(rviewAdapter);
@@ -76,9 +82,9 @@ public class Question extends AppCompatActivity {
                 lessonsMap = new HashMap<>();
                 DataSnapshot usersSnapshot = snapshot.child("Users").child(user).child("courses").child(language).child("Lessons");
                 for (DataSnapshot userSnapshot : usersSnapshot.getChildren()) {
-                    fetchDataLesson(userSnapshot);
+//                    fetchDataLesson(userSnapshot);
                 }
-                String completedValue = languageCompleted_map.get("completed");
+                String completed = languageCompleted_map.get("completed");
                 rviewAdapter.notifyDataSetChanged();
             }
 
@@ -124,12 +130,11 @@ public class Question extends AppCompatActivity {
             lessonsArray_user.add(lesson);
         }
     }
-
-    private void fetchDataLesson(DataSnapshot userSnapshot) {
-
-        Long progress = userSnapshot.child("progress").getValue(Long.class);
-        String completed = userSnapshot.child("completed").getValue(String.class);
-        languageCompleted_map.put("completed", completed);
-
-    }
+//
+//    private void fetchDataLesson(DataSnapshot userSnapshot) {
+//
+//        Progress progress = userSnapshot.getValue(Progress.class);
+//        languageCompleted_map.put("completed", progress.getCompleted());
+//
+//    }
 }

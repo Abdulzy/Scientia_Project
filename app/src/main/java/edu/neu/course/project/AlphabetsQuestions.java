@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -22,8 +23,8 @@ import java.util.HashMap;
 
 public class AlphabetsQuestions extends AppCompatActivity {
 
-    private String user = "Meera";
-    private String learningLanguage = "Hindi";
+    private String user;
+    private String learningLanguage;
     private String level = "Alphabets";
     private ArrayList<QuestionData> questionsArray = new ArrayList<>();
     private HashMap<String, QuestionData> questionsMap;
@@ -43,6 +44,9 @@ public class AlphabetsQuestions extends AppCompatActivity {
         setContentView(R.layout.activity_alphabets_questions);
         question = findViewById(R.id.question_id);
         rLayoutManger = new LinearLayoutManager(this);
+        Intent intent = getIntent();
+        user = intent.getStringExtra("sender");
+        learningLanguage = intent.getStringExtra("language");
         rview = findViewById(R.id.rcv_qns);
         rview.setHasFixedSize(true);
         rview.setLayoutManager(rLayoutManger);
