@@ -62,14 +62,14 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
 
         if (adapterView.getId() == R.id.learnLanguage) {
              selectedLearnLanguage = adapterView.getItemAtPosition(i).toString();
-            Toast.makeText(this, "You have selected " + selectedLearnLanguage, Toast.LENGTH_SHORT).show();
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference = database.getReference("Users");
-            reference.addValueEventListener(new ValueEventListener() {
+            ValueEventListener val = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Log.i(TAG, "inside the listener");
-                    if (!snapshot.hasChild("courses")){
+
+                    if (!snapshot.child(currentUser).hasChild("courses")) {
+                        Toast.makeText(LanguageActivity.this, "You have entered here " + snapshot.hasChild("courses"), Toast.LENGTH_SHORT).show();
                         Progress prog = new Progress(0L, "no");
                         reference.child(currentUser)
                                 .child("courses").child(selectedLearnLanguage).child("Lessons").child("Alphabets").setValue(prog);
@@ -78,7 +78,7 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
                         reference.child(currentUser)
                                 .child("courses").child(selectedLearnLanguage).child("Lessons").child("Basics").setValue(prog);
 
-                    }else{
+                    } else{
                         Toast.makeText(getApplicationContext(), "Username is incorrect! ", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -87,52 +87,11 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
-            });
+            };
+            reference.addListenerForSingleValueEvent(val);
         }
     }
 
-//    private Long getProgress(FirebaseDatabase db) {
-//        String progress;
-//        db.getReference("Users");
-//        ValueEventListener valueEventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                DataSnapshot usersSnapshot = snapshot.child("Users").child(currentUser).
-//                        child("courses").child(selectedLearnLanguage).child("Lessons");
-//                for (DataSnapshot userSnapshot : usersSnapshot.getChildren()) {
-//                    if (userSnapshot != null) {
-//                        fetchProgress(userSnapshot);
-//                    }
-//                }
-//            }
-//
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Log.i(TAG, error.getMessage());
-//            }
-//        };
-//        return null;
-//    }
-
-//    private void fetchProgress(DataSnapshot userSnapshot) {
-//        if (userSnapshot.getKey().equals("Alphabet")) {
-//            Long progress = userSnapshot.child("Alphabets").child("progress").getValue(Long.class);
-//            ProgressMap.put("Alphabets", progress);
-//            Log.d("Tag", "progress" + progress);
-//        }
-//        if (userSnapshot.getKey().equals("Advanced")) {
-//            Long progress = userSnapshot.child("Advanced").child("progress").getValue(Long.class);
-//            ProgressMap.put("Alphabets", progress);
-//
-//        }
-//        if (userSnapshot.getKey().equals("Basics")) {
-//            Long progress = userSnapshot.child("Basics").child("progress").getValue(Long.class);
-//            ProgressMap.put("Alphabets", progress);
-//
-//        }
-//    }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {

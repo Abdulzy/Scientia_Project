@@ -163,12 +163,12 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                         }
                         if(progress >= qArray.size()) {
                             Progress updatedprogress = new Progress(progress, "yes");
+                            updatedprogress.setCompleted(completed);
+                            updatedprogress.setProgress(progress);
                             dbRef.child("Users").child(user).child("courses").child(lang)
-                                    .child("Lessons").child(level).child("progress").setValue(updatedprogress);
-//                            dbRef.child("Users").child(user).child("courses").child(lang)
-//                                    .child("Lessons").child(level).child("completed").setValue("yes");
+                                    .child("Lessons").child(level).child("completed").setValue("yes");
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                            builder.setTitle("Progress in Course");
+                            builder.setTitle("Completed");
                             builder.setMessage("Hey " + user + "! You have completed level " + level +
                                     ". Great work!!!");
                             builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
@@ -182,10 +182,10 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
                             builder.show();
                         }
                         Progress updatedprogress = new Progress(progress, completed);
-//                        HashMap<String, Long> progressmap;
-//                        progressmap.put("progress", )
+                        Long p = updatedprogress.getProgress();
+                        String c = updatedprogress.getCompleted();
                         dbRef.child("Users").child(user).child("courses").child(lang)
-                                .child("Lessons").child(level).child("progress").setValue(updatedprogress);
+                                .child("Lessons").child(level).child("progress").setValue(p);
 
                     }
                 }
