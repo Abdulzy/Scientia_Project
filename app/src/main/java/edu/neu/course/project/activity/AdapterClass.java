@@ -119,7 +119,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
                                 context.startActivity(intent);
                             }
                             else if (lesson.lessonName.equals("Advanced")) {
-                                Intent intent = new Intent(context, AlphabetsQuestions.class);
+                                Intent intent = new Intent(context, AdvancedQuestions.class);
                                 intent.putExtra("sender", user);
                                 intent.putExtra("language", lang);
                                 context.startActivity(intent);

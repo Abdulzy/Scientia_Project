@@ -69,7 +69,6 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     if (!snapshot.child(currentUser).child("courses").hasChild(selectedLearnLanguage)) {
-                        Toast.makeText(LanguageActivity.this, "You have entered here " + snapshot.hasChild("courses"), Toast.LENGTH_SHORT).show();
                         Progress prog = new Progress(0L, "no");
                         reference.child(currentUser)
                                 .child("courses").child(selectedLearnLanguage).child("Lessons").child("Alphabets").setValue(prog);
@@ -78,9 +77,8 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
                         reference.child(currentUser)
                                 .child("courses").child(selectedLearnLanguage).child("Lessons").child("Basics").setValue(prog);
 
-                    } else{
-                        Toast.makeText(getApplicationContext(), "Username is incorrect! ", Toast.LENGTH_LONG).show();
                     }
+                    Toast.makeText(getApplicationContext(), selectedLearnLanguage +" has been selected", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
