@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:gravity="center"
-        android:text="Foreign Language:"
+        android:text="Select the language you want to learn:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/learnLanguage"

@@ -3,7 +3,7 @@
 
     <string name="channel_name">Scientia Project</string>
     <string name="channel_id">channel_Scientia</string>
-
+    <string name="msg_token_fmt">FCM registration Token: %s</string>
     <string-array name="languages">
         <item>korean</item>
         <item>french</item>

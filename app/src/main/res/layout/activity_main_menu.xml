@@ -6,48 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".MainMenu">
 
+    <TextView
+        android:id="@+id/WelcomeMessage"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:text="Welcome to Scientia"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/userMessage" />
+
+    <TextView
+        android:id="@+id/userMessage"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/WelcomeMessage"
+        app:layout_constraintBottom_toTopOf="@+id/play" />
+
     <Button
         android:id="@+id/play"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play"
         android:onClick="toPlay"
         app:layout_constraintBottom_toTopOf="@+id/leaderboard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"  />
+        app:layout_constraintTop_toBottomOf="@id/userMessage" />
 
     <Button
         android:id="@+id/leaderboard"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Leaderboard"
         android:onClick="toLeaderboard"
-        app:layout_constraintBottom_toTopOf="@+id/languageSelect"
+        app:layout_constraintBottom_toTopOf="@+id/aboutUs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/play" />
 
     <Button
-        android:id="@+id/languageSelect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Language Select"
-        android:onClick="toLanguage"
-        app:layout_constraintBottom_toTopOf="@+id/aboutUs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboard"   />
-
-    <Button
         android:id="@+id/aboutUs"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About Us"
         android:onClick="toAboutUs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/languageSelect"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/leaderboard"
+        app:layout_constraintBottom_toTopOf="@+id/logOutButton" />
+
+
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="logOut"
+        android:text="LOG OUT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutUs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

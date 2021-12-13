@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -18,6 +19,8 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = getIntent();
         currentUser = intent.getStringExtra("sender");
         currentToken = intent.getStringExtra("token");
+        TextView name = findViewById(R.id.userMessage);
+        name.setText(currentUser + "!!!");
     }
 
 
@@ -43,4 +46,10 @@ public class MainMenu extends AppCompatActivity {
         intent.putExtra("token", currentToken);
         startActivity(intent);
     }
+
+    public void logOut(View view) {
+        this.finish();
+    }
+
+
 }

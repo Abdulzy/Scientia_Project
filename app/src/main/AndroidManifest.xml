@@ -37,7 +37,7 @@
             android:name=".MainMenu"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,18 +46,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashBoard"
-            android:exported="true" />
-        <activity
-            android:name=".LanguageActivity"
-            android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.LOGIN" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DashBoard"
+            android:exported="true" />
+        <activity
+            android:name=".LanguageActivity"
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true">
