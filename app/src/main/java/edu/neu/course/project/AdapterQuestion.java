@@ -46,7 +46,7 @@ public class AdapterQuestion extends RecyclerView.Adapter<AdapterQuestion.Questi
         this.lang = learningLanguage;
         this.level = lessonLevel;
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Users").child(user).child("courses").child(lang).child("Lessons").child(level).child("progress").setValue(0);
+        databaseReference.child("Users").child(this.user).child("courses").child(lang).child("Lessons").child(level).child("progress").setValue(0);
 
     }
 

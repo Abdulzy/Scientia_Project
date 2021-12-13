@@ -77,14 +77,20 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder>{
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     if (lesson.lessonName.equals("Alphabets")) {
                                         Intent intent = new Intent(context, AlphabetsQuestions.class);
+                                        intent.putExtra("sender", user);
+                                        intent.putExtra("language", lang);
                                         context.startActivity(intent);
                                     }
                                     else if (lesson.lessonName.equals("Basics")) {
                                         Intent intent = new Intent(context, BasicsQuestions.class);
+                                        intent.putExtra("sender", user);
+                                        intent.putExtra("language", lang);
                                         context.startActivity(intent);
                                     }
                                     else if (lesson.lessonName.equals("Advanced")) {
                                         Intent intent = new Intent(context, AdvancedQuestions.class);
+                                        intent.putExtra("sender", user);
+                                        intent.putExtra("language", lang);
                                         context.startActivity(intent);
                                     }
 

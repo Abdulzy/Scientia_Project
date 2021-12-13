@@ -68,7 +68,7 @@ public class LanguageActivity extends AppCompatActivity implements AdapterView.O
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    if (!snapshot.child(currentUser).hasChild("courses")) {
+                    if (!snapshot.child(currentUser).child("courses").hasChild(selectedLearnLanguage)) {
                         Toast.makeText(LanguageActivity.this, "You have entered here " + snapshot.hasChild("courses"), Toast.LENGTH_SHORT).show();
                         Progress prog = new Progress(0L, "no");
                         reference.child(currentUser)
